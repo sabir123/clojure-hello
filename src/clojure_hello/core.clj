@@ -1,8 +1,6 @@
-(ns tutorial.core)
+(ns clojure-hello.core)
 
-(defn foo
+(defn -main
   "this function prints x and Hello World!"
-  [x]
-  (println x "Hello, World!"))
-  
-  (foo "Sabir")
+  [& args]
+  (println "Hello, World!"))
