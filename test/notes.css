@@ -1,0 +1,70 @@
+/* --- BASE WIDTH CONTROL FOR THE DROPDOWN FIELD --- */
+#POS_ENTER_PRICE_field_overrideReason_dropdown {
+    width: 34.3%;
+    max-width: 34.3%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* --- CLOSED STATE: KEEP THE INPUT TRUNCATED WITH ELLIPSIS --- */
+#POS_ENTER_PRICE_field_overrideReason_dropdown .dijitInputContainer,
+#POS_ENTER_PRICE_field_overrideReason_dropdown input,
+#POS_ENTER_PRICE_field_overrideReason_dropdown .dijitInputField,
+#POS_ENTER_PRICE_field_overrideReason_dropdown .dijitReset.dijitInputField {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* --- PREVENT SHRINKING OF THE INPUT CONTAINER IN FLEX LAYOUTS --- */
+#POS_ENTER_PRICE_field_overrideReason_dropdown .dijitInputContainer {
+    flex-shrink: 0 !important;
+    flex-grow: 1;
+    position: relative;
+}
+
+/* --- ENSURE THE ENTIRE DROPDOWN STAYS INSIDE ITS PARENT --- */
+#callbackContent_POS_ENTER_PRICE .cbField.field_overrideReason {
+    flex-shrink: 1;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* -------------------------------------------------------------------
+   OPEN DROPDOWN LIST FIXES
+   (This is the part that solves your truncation issue)
+   ------------------------------------------------------------------- */
+
+/* Keep the dropdown menu the SAME width as the input */
+.dijitComboBoxMenuPopup {
+    width: auto !important;
+    min-width: 100% !important;   /* Always match input width */
+    box-sizing: border-box;
+}
+
+/* Prevent menu item container shrink */
+.dijitComboBoxMenu .dijitMenuItem {
+    min-width: 100% !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box;
+}
+
+/* OPEN STATE: Show full text with wrapping (remove ellipsis here) */
+.dijitComboBoxMenu .dijitMenuItem {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+}
+
+/* Fix inner div so text doesn’t compress inside menu items */
+.dijitComboBoxMenu .dijitMenuItem > div {
+    display: block;
+    white-space: normal !important;
+    width: 100%;
+    }
